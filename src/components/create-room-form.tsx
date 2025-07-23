@@ -82,7 +82,7 @@ export function CreateRoomForm() {
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Descruption</FormLabel>
+                  <FormLabel>Description</FormLabel>
                   <FormControl>
                     <Textarea {...field} />
                   </FormControl>
