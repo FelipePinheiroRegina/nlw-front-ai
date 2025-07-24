@@ -1,174 +1,176 @@
-# 🚀 NLW Front AI
+# NLW Front AI
 
-A modern React application built with cutting-edge technologies for creating and managing AI-powered rooms. This project is part of the NLW (Next Level Week) series, focusing on frontend development with AI integration.
+Uma aplicação moderna em React para criação e gerenciamento de salas com recursos de IA, desenvolvida durante o NLW (Next Level Week). O projeto utiliza as melhores práticas do ecossistema React, com foco em performance, acessibilidade e experiência do usuário.
 
-## 🛠️ Technologies
+---
 
-### Core Technologies
-- **React 19.1.0** - Latest version of React with concurrent features
-- **TypeScript 5.8.3** - Type-safe JavaScript development
-- **Vite 7.0.3** - Fast build tool and development server
+## Índice
 
-### UI & Styling
-- **Tailwind CSS 4.1.11** - Utility-first CSS framework
-- **Radix UI** - Accessible component primitives
-- **Lucide React** - Beautiful & consistent icon toolkit
-- **Class Variance Authority** - Type-safe component variants
-- **clsx & tailwind-merge** - Conditional styling utilities
+- [Visão Geral](#visão-geral)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Scripts Disponíveis](#scripts-disponíveis)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Páginas](#páginas)
+- [Componentes](#componentes)
+- [Componentes de UI](#componentes-de-ui)
+- [Hooks & API](#hooks--api)
+- [Tipos de API](#tipos-de-api)
+- [Utilitários](#utilitários)
+- [Como Contribuir](#como-contribuir)
+- [Licença](#licença)
 
-### State Management & Data Fetching
-- **TanStack React Query 5.82.0** - Powerful data synchronization for React
-- **React Router DOM 7.6.3** - Declarative routing for React
+---
 
-### Development Tools
-- **Biome** - Fast formatter and linter
-- **Ultracite** - Enhanced development experience
-- **tw-animate-css** - Tailwind CSS animations
+## Visão Geral
 
-## 📁 Project Structure
+O NLW Front AI permite criar, listar e interagir com salas, integrando recursos de IA e gravação de áudio. O projeto é modular, escalável e utiliza bibliotecas modernas para garantir código limpo e manutenível.
+
+---
+
+## Tecnologias Utilizadas
+
+- **React 19** & **React DOM** – Biblioteca principal de UI
+- **TypeScript** – Tipagem estática
+- **Vite** – Bundler e servidor de desenvolvimento rápido
+- **Tailwind CSS** & **tw-animate-css** – Estilização utilitária e animações
+- **Radix UI** – Primitivas acessíveis de componentes
+- **Lucide React** – Ícones modernos
+- **TanStack React Query** – Gerenciamento de dados assíncronos
+- **React Router DOM** – Roteamento SPA
+- **React Hook Form** & **Zod** – Formulários e validação
+- **Class Variance Authority, clsx, tailwind-merge** – Utilitários de composição de classes
+- **Dayjs** – Manipulação de datas
+- **Biome** – Linter e formatter
+- **Ultracite** – Ferramentas de DX
+
+---
+
+## Scripts Disponíveis
+
+- `pnpm dev` – Inicia o servidor de desenvolvimento
+- `pnpm build` – Gera build de produção
+- `pnpm preview` – Visualiza o build de produção localmente
+
+---
+
+## Estrutura do Projeto
 
 ```
 nlw-front-ai/
 ├── src/
 │   ├── components/
-│   │   └── ui/           # Reusable UI components (shadcn/ui)
-│   ├── pages/            # Application pages
+│   │   ├── create-room-form.tsx
+│   │   ├── question-form.tsx
+│   │   ├── question-item.tsx
+│   │   ├── question-list.tsx
+│   │   ├── room-list.tsx
+│   │   └── ui/
+│   │       ├── badge.tsx
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       ├── form.tsx
+│   │       ├── input.tsx
+│   │       ├── label.tsx
+│   │       └── textarea.tsx
+│   ├── pages/
 │   │   ├── create-room.tsx
+│   │   ├── record-room-audio.tsx
 │   │   └── room.tsx
-│   ├── lib/              # Utility functions and configurations
-│   ├── App.tsx           # Main application component
-│   ├── main.tsx          # Application entry point
-│   └── index.css         # Global styles
-├── public/               # Static assets
-├── package.json          # Dependencies and scripts
-├── vite.config.ts        # Vite configuration
-├── tsconfig.json         # TypeScript configuration
-├── biome.jsonc           # Biome linter/formatter config
-└── components.json       # shadcn/ui configuration
+│   ├── http/
+│   │   ├── use-create-question.ts
+│   │   ├── use-create-room.ts
+│   │   ├── use-room-questions.ts
+│   │   ├── use-rooms.ts
+│   │   └── types/
+│   │       ├── create-question-request.ts
+│   │       ├── create-question-response.ts
+│   │       ├── create-room-request.ts
+│   │       ├── create-room-response.ts
+│   │       ├── get-room-questions-response.ts
+│   │       └── get-rooms-response.ts
+│   ├── lib/
+│   │   └── utils.ts
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
 ```
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- **Node.js** (version 18 or higher)
-- **pnpm** (recommended) or npm/yarn
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd nlw-front-ai
-   ```
-
-2. **Install dependencies**
-   ```bash
-   pnpm install
-   # or
-   npm install
-   # or
-   yarn install
-   ```
-
-3. **Start the development server**
-   ```bash
-   pnpm dev
-   # or
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-4. **Open your browser**
-   Navigate to `http://localhost:5173` to view the application.
-
-### Available Scripts
-
-- `pnpm dev` - Start development server
-- `pnpm build` - Build for production
-- `pnpm preview` - Preview production build locally
-
-## 🏗️ Architecture
-
-### Component Architecture
-The project follows a modular component architecture using **shadcn/ui** components, which provides:
-- Consistent design system
-- Type-safe component variants
-- Accessible components out of the box
-- Easy customization with Tailwind CSS
-
-### Routing
-The application uses React Router for navigation with two main routes:
-- `/` - Create Room page (default)
-- `/room/:roomId` - Individual room details
-
-### Data Management
-- **TanStack React Query** handles server state management
-- Automatic caching and background updates
-- Optimistic updates for better UX
-- Error handling and loading states
-
-## 🎨 Features
-
-### Current Features
-- ✅ Room listing and navigation
-- ✅ Type-safe API integration
-- ✅ Responsive design with Tailwind CSS
-- ✅ Modern React patterns with hooks
-- ✅ Fast development with Vite
-
-### Planned Features
-- 🔄 Real-time room updates
-- 🔄 AI-powered room interactions
-- 🔄 User authentication
-- 🔄 Advanced room management
-
-## 🔧 Configuration
-
-### Environment Setup
-The project is configured to connect to a backend API running on `http://localhost:3333`. Make sure your backend server is running for full functionality.
-
-### Development Tools
-- **Biome** is configured for code formatting and linting
-- **TypeScript** strict mode enabled for better type safety
-- **Path aliases** configured for cleaner imports (`@/` points to `src/`)
-
-## 📦 Dependencies
-
-### Production Dependencies
-- `react` & `react-dom` - React framework
-- `@tanstack/react-query` - Data fetching and caching
-- `react-router-dom` - Client-side routing
-- `@radix-ui/react-slot` - Component primitives
-- `tailwindcss` - CSS framework
-- `lucide-react` - Icon library
-
-### Development Dependencies
-- `@vitejs/plugin-react` - Vite React plugin
-- `@biomejs/biome` - Linter and formatter
-- `typescript` - TypeScript compiler
-- `@types/react` & `@types/react-dom` - TypeScript definitions
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is part of the NLW (Next Level Week) series. Please check the license file for more details.
-
-## 🙏 Acknowledgments
-
-- **Rocketseat** for the NLW series
-- **shadcn/ui** for the amazing component library
-- **Vite** team for the incredible build tool
-- **TanStack** for React Query
 
 ---
 
-**Happy coding! 🎉** 
+## Páginas
+
+- **create-room.tsx** – Página para criar uma nova sala.
+- **room.tsx** – Página de detalhes e interação de uma sala específica.
+- **record-room-audio.tsx** – Página para gravação de áudio em uma sala.
+
+---
+
+## Componentes
+
+- **create-room-form.tsx** – Formulário para criação de salas.
+- **question-form.tsx** – Formulário para envio de perguntas.
+- **question-item.tsx** – Exibe uma pergunta individual.
+- **question-list.tsx** – Lista de perguntas de uma sala.
+- **room-list.tsx** – Lista de salas disponíveis.
+
+---
+
+## Componentes de UI (`src/components/ui/`)
+
+- **badge.tsx** – Selo/etiqueta visual.
+- **button.tsx** – Botão reutilizável.
+- **card.tsx** – Cartão para agrupar conteúdos.
+- **form.tsx** – Elementos de formulário estilizados.
+- **input.tsx** – Campo de entrada de texto.
+- **label.tsx** – Rótulo para inputs.
+- **textarea.tsx** – Área de texto para inputs maiores.
+
+---
+
+## Hooks & API (`src/http/`)
+
+- **use-create-room.ts** – Hook para criação de salas via API.
+- **use-rooms.ts** – Hook para listagem de salas.
+- **use-create-question.ts** – Hook para envio de perguntas.
+- **use-room-questions.ts** – Hook para listagem de perguntas de uma sala.
+
+---
+
+## Tipos de API (`src/http/types/`)
+
+- **create-room-request.ts** – Tipo para requisição de criação de sala.
+- **create-room-response.ts** – Tipo para resposta de criação de sala.
+- **get-rooms-response.ts** – Tipo para resposta de listagem de salas.
+- **create-question-request.ts** – Tipo para requisição de criação de pergunta.
+- **create-question-response.ts** – Tipo para resposta de criação de pergunta.
+- **get-room-questions-response.ts** – Tipo para resposta de listagem de perguntas de uma sala.
+
+---
+
+## Utilitários
+
+- **utils.ts** – Funções utilitárias auxiliares.
+
+---
+
+## Como Contribuir
+
+1. Faça um fork do repositório
+2. Crie uma branch para sua feature: `git checkout -b feature/nome-da-feature`
+3. Commit suas alterações: `git commit -m 'feat: minha nova feature'`
+4. Push para o seu fork: `git push origin feature/nome-da-feature`
+5. Abra um Pull Request
+
+---
+
+## Licença
+
+Este projeto faz parte do NLW (Next Level Week) da Rocketseat. Consulte o arquivo de licença para mais detalhes.
+
+---
+
+**Dúvidas ou sugestões? Fique à vontade para abrir uma issue!** 
